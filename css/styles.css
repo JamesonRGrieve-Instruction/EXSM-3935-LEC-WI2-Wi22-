@@ -1,0 +1,31 @@
+#output {
+    background-color: #111;
+    overflow-y:scroll;
+    height: calc(100vh - 50px);
+    margin: 0 auto;
+    padding: 0;
+}
+#output p {
+    margin: 0;
+    color: #EEE;
+}
+#input {
+    display: flex;
+}
+#input > input:first-of-type {
+    flex-grow: 1;
+}
+#input > input:last-of-type {
+    width: 100px;
+}
+.container {
+    margin: 0 auto;
+    width: 80%;
+    position: relative;
+    border: 3px solid grey;
+}
+.flash>.editing::after {
+ content: "|";
+ font-weight: bolder;
+
+}
