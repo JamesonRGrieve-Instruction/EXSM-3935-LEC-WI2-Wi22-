@@ -4,6 +4,10 @@ async function main() {
     
     let name = await input("Please enter your name: ");
 
-    print("Hello, "+name+"!");
+    while (name != "bob") 
+    {
+        print("Hello, "+name+"!");
+        name = await input("Please enter your name: ");
+    }
 }
 main();

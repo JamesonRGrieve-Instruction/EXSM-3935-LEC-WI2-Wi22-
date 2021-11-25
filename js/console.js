@@ -8,7 +8,6 @@ function print(string) {
     document.querySelector("#output").appendChild(newP);
 }
 async function input(string) {
-    // Anything passed into here will be prompted to the user, and then grab what the user enters.
     let newP = document.createElement("p");
     newP.innerHTML = string + '<span class="editing"></span>';
     document.querySelector("#output").appendChild(newP);
@@ -17,6 +16,7 @@ async function input(string) {
     let text = inputBar.value;
     inputBar.value = "";
     newP.classList.remove("flash");
+    newP.querySelector("span").classList.remove("editing");
     proceed = false;
     return text;
 }
@@ -26,11 +26,8 @@ function submit() {
 inputBar.addEventListener("keyup", function(event) {
     console.log(inputBar.value);
     document.querySelector(".editing").innerText = inputBar.value;
-    // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
-      // Cancel the default action, if needed
       event.preventDefault();
-      // Trigger the button element with a click
       document.getElementById("inputButton").click();
     }
   });

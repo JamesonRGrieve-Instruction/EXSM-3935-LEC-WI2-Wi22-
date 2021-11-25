@@ -27,5 +27,4 @@
 .flash>.editing::after {
  content: "|";
  font-weight: bolder;
-
 }
