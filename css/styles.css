@@ -1,18 +1,23 @@
 html {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --green: #0C0;
+    --white: #EEE;
+    --black: #111;
 }
-body, body.white-on-black {
-    --text: #EEE;
-    --back: #111;
+body, .white-on-black {
+    --text: var(--white);
+    --back: var(--black);
 }
-body.black-on-white {
-    --text: #111;
-    --back: #EEE;
+.black-on-white {
+    --text: var(--black);
+    --back: var(--white);
 }
-body.green-on-black {
-    --text: #0C0;
-    --back: #111;
+.green-on-black {
+    --text: var(--green);
+    --back: var(--black);
 }
+
+
 #output {
     background-color: var(--back);
     overflow-y:scroll;
@@ -33,7 +38,7 @@ body.green-on-black {
     margin: 0 auto;
     width: 80%;
     position: relative;
-    border: 3px solid grey;
+    border: 3px solid var(--black);
 }
 .flash>.editing::after {
  content: "|";
@@ -41,8 +46,8 @@ body.green-on-black {
 }
 
 #themes {
-    background-color: #CCC;
-    border: 3px solid black;
+    background-color: var(--white);
+    border: 3px solid var(--black);
     border-radius: 3px;
     position: absolute;
     top: 10px;
@@ -52,29 +57,19 @@ body.green-on-black {
 .theme {
     width: 25px;
     height: 25px;
-    border: 3px solid black;
+    border: 3px solid var(--black);
     border-radius: 3px;
     margin: 5px;
     text-align: center;
     line-height: 25px;
     cursor: pointer;
+    background-color: var(--back);
+    color: var(--text);
 }
 
 .theme:hover {
     border-color: rgb(0, 110, 110);
 }
 
-#white-on-black {
-    color: #FFF;
-    background-color: #000;
-}
 
-#black-on-white {
-    color: #000;
-    background-color: #FFF;
-}
-#green-on-black {
-    color: #0F0;
-    background-color: #000;
-}
 

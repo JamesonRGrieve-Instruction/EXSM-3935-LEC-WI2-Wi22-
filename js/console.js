@@ -46,7 +46,7 @@ function refreshTheme()
 for (item of document.querySelectorAll(".theme"))
 {
     item.addEventListener("click", function(event) {
-        localStorage.setItem('exsm3935-theme', event.target.getAttribute("id"));
+        localStorage.setItem('exsm3935-theme', event.target.classList[0]);
         refreshTheme();
     });
 }
