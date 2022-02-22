@@ -1,4 +1,6 @@
-let inputBar = document.querySelector("#inputBar");
+let inputBar = document.querySelector("#input");
+let output = document.querySelector("#output");
+
 let proceed = false;
 const timeout = async ms => new Promise(res => setTimeout(res, ms));
 function print(string) {
@@ -28,7 +30,25 @@ inputBar.addEventListener("keyup", function(event) {
     document.querySelector(".editing").innerText = inputBar.value;
     if (event.keyCode === 13) {
       event.preventDefault();
-      document.getElementById("inputButton").click();
+      submit();
     }
   });
- 
+output.addEventListener("click", function(event) {
+    inputBar.focus();
+});
+
+function refreshTheme()
+{
+    let body = document.querySelector("body");   
+    body.classList.remove(...body.classList);
+    body.classList.add(localStorage.getItem('exsm3935-theme'));
+}
+for (item of document.querySelectorAll(".theme"))
+{
+    item.addEventListener("click", function(event) {
+        localStorage.setItem('exsm3935-theme', event.target.getAttribute("id"));
+        refreshTheme();
+    });
+}
+
+refreshTheme();
