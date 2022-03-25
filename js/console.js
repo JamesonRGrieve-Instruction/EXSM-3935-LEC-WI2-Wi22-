@@ -1,12 +1,16 @@
 let inputBar = document.querySelector("#input");
-let output = document.querySelector("#output");
+let outputPanel = document.querySelector("#output");
 
 let proceed = false;
 const timeout = async ms => new Promise(res => setTimeout(res, ms));
-function print(string) {
+function output(string, type="normal") {
     // Anything passed into here will be printed in the web page.
     let newP = document.createElement("p");
-    newP.innerText = string;
+    newP.innerText = String(string).replaceAll(' ', '\xa0');
+    if (type != "normal")
+    {
+        newP.classList.add(type);
+    }
     document.querySelector("#output").appendChild(newP);
 }
 async function input(string) {
@@ -26,14 +30,13 @@ function submit() {
     proceed = true;
 }
 inputBar.addEventListener("keyup", function(event) {
-    console.log(inputBar.value);
-    document.querySelector(".editing").innerText = inputBar.value;
+    document.querySelector(".editing").innerText = inputBar.value.replaceAll(' ', '\xa0');
     if (event.keyCode === 13) {
       event.preventDefault();
       submit();
     }
   });
-output.addEventListener("click", function(event) {
+outputPanel.addEventListener("click", function(event) {
     inputBar.focus();
 });
 
@@ -50,5 +53,9 @@ for (item of document.querySelectorAll(".theme"))
         refreshTheme();
     });
 }
-
+async function run() {
+    await main().catch((e) => output("\n---UNHANDLED EXCEPTION---\n"+e.stack, "error"));
+    output("\nEnd of program, please refresh the page (F5) to restart the program.", "meta");
+}
 refreshTheme();
+run();
