@@ -20,6 +20,7 @@ async function main() {
     let discountCode = await input("Please enter a discount code (or 0 for no code): ");
     let discountPercentage;
 
+    /*
     if (discountCode == "1")
     {
         discountPercentage = 0.1;
@@ -44,16 +45,35 @@ async function main() {
     {
         discountPercentage = 0;
     }
+    */
+    switch (discountCode) {
+        case "1":
+            discountPercentage = 0.1;
+            break;
+        case "2":
+            discountPercentage = 0.15;
+            break;
+        case "3":
+            discountPercentage = 0.25;
+            break;
+        case "4":
+            discountPercentage = 0.35;
+            break;
+        case "5":
+            discountPercentage = 0.40;
+            break;
+        default:
+            discountPercentage = 0;
+            break;
+    }
 
-    let discountedTotal = totalCost * (1-discountPercentage);
+    let discountedTotal = totalCost * (1 - discountPercentage);
 
     // If the total is greater than the amount of cash the customer gave us, then it's not enough money.
-    if (discountedTotal > cashProvided)
-    {
+    if (discountedTotal > cashProvided) {
         output("Insufficient Payment!");
     }
-    else
-    {
-        output("Thank you for your business, your change is $"+(cashProvided-discountedTotal)+".");
+    else {
+        output("Thank you for your business, your change is $" + (cashProvided - discountedTotal) + ".");
     }
 }
