@@ -12,6 +12,15 @@ async function main() {
     ☑ -When the user inputs “END”, your program should display the total price, followed by the receipt items
     ☑ -Use a loop to keep the program running, with the loop break condition being when the user inputs “END”
     */
+
+    /*
+    Types of Loops:
+    Count Loops - Loop a specific number of times.
+    Iterative Loops - Loop once for each thing in an array.
+    Validation Loops - Loop until something valid is entered.
+    Sentinel Value Loops - Loop until something specific is entered.
+    */
+
     let priceArray =
         [
             [1234, "Apple", 0.40],
@@ -30,7 +39,6 @@ async function main() {
         do {
             userInput = (await input("Please enter an item code: ")).toUpperCase().trim().split("").join("-").replaceAll("-", "");
             // " end", " END", "END", ["E", "N", "D"], "E-N-D", "END"
-
 
             /*
             userInput = await input("Please enter an item code: ");
