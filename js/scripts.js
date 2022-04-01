@@ -28,7 +28,16 @@ async function main() {
     do {
         let found;
         do {
-            userInput = await input("Please enter a item code: ");
+            userInput = (await input("Please enter an item code: ")).toUpperCase().trim().split("").join("-").replaceAll("-", "");
+            // " end", " END", "END", ["E", "N", "D"], "E-N-D", "END"
+
+
+            /*
+            userInput = await input("Please enter an item code: ");
+            userInput = userInput.toUpperCase();
+            userInput = userInput.trim();
+            */
+
             found = false;
             for (let i = 0; i < priceArray.length; i++) {
                 // Check the current row at index 0 (item codes) to see if it's what we're looking for.
@@ -39,15 +48,14 @@ async function main() {
                 }
             }
             // Override our boolean if the sentinel value for the outer loop is met. This cleans up our following condition logic.
-            if (userInput == "END")
-            {
+            if (userInput == "END") {
                 found = true;
             }
             if (!found) {
                 output("No such product found.");
             }
-        // If found == false and userInput == "END" we want to exit the loop, so the condition needs to be false.
+            // If found == false and userInput == "END" we want to exit the loop, so the condition needs to be false.
         } while (!found);
     } while (userInput != "END");
-    output("You have spent a total of $" + totalPrice + " on the items: " + receiptArray + ".");
+    output("You have spent a total of $" + Math.round(totalPrice * 100) / 100 + " on the items: " + receiptArray + ".");
 }
