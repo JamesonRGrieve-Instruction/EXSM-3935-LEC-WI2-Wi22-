@@ -1,33 +1,59 @@
 async function main() {
-    greeting();
+    let theEmployee = {
+        firstName: "John",
+        lastName: "Doe",
+        employeeNumber: 1001,
+        department: "Shipping and Recieving",
+        subordinates: [
+            {
+                firstName: "Jane",
+                lastName: "Doe",
+                employeeNumber: 1002,
+                department: "Shipping and Recieving",
+                subordinates: []
+            },
+            {
+                firstName: "Bob",
+                lastName: "Doe",
+                employeeNumber: 1002,
+                department: "Shipping and Recieving",
+                subordinates: []
+            },
+            {
+                firstName: "Sally",
+                lastName: "Doe",
+                employeeNumber: 1002,
+                department: "Shipping and Recieving",
+                subordinates: []
+            }
+        ]
 
-    greet("James");
-    greet("John");
-    greet("Jane");
+    };
 
-    output(giveMePi());
-    output(addThese(42, 12));
+    output(`Employee ${theEmployee.firstName} ${theEmployee.lastName} with employee number ${theEmployee.employeeNumber} is currently working in the ${theEmployee.department} department.`);
+
+    theEmployee.department = "Sales";
+
+    output(`Employee ${theEmployee.firstName} ${theEmployee.lastName} with employee number ${theEmployee.employeeNumber} is currently working in the ${theEmployee.department} department.`);
+
+    output(theEmployee.subordinates[0].firstName);
+
+    for (employee of theEmployee.subordinates)
+    {
+        output(employee.firstName);
+    }
+
+    let objectString = JSON.stringify(theEmployee);
+
+    let anotherObject = JSON.parse(objectString);
+
+    
+    output(`Employee ${anotherObject.firstName} ${anotherObject.lastName} with employee number ${anotherObject.employeeNumber} is currently working in the ${anotherObject.department} department.`);
+
+    theEmployee.department = "Management";
+
+    output(`Original: Employee ${theEmployee.firstName} ${theEmployee.lastName} with employee number ${theEmployee.employeeNumber} is currently working in the ${theEmployee.department} department.`);
+    output(`Imported: Employee ${anotherObject.firstName} ${anotherObject.lastName} with employee number ${anotherObject.employeeNumber} is currently working in the ${anotherObject.department} department.`);
+    
 }
 
-// Function with no parameters and no returns.
-function greeting() {
-    output("Hello.");
-    output("How are you?");
-    output("How's the weather?");
-}
-
-// Function with a single parameter and no returns.
-function greet(person) {
-    output(`Hello, ${person}! How are you?`);
-}
-
-// Function with no parameters and a return.
-function giveMePi() {
-    return 3.141592654;
-}
-
-// Function with two parameters and a return.
-function addThese(number1, number2)
-{
-    return number1 + number2;
-}
